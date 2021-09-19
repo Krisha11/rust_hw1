@@ -14,18 +14,18 @@ fn read_int() -> u64 {
     input
 }
 
-fn try_guess(answer : &u64) -> bool {
+fn try_guess(answer : u64) -> bool {
     let input = read_int();
-    if input > *answer {
-        println!("<")
+    if input > answer {
+        println!("Answer < Your Number")
     }
-    else if input < *answer {
-        println!(">")
+    else if input < answer {
+        println!("Answer > You Number")
     }
     else {
         println!("You win!")
     }
-    *answer == input
+    answer == input
 }
 
 
@@ -33,6 +33,6 @@ fn main() {
     println!("Hello, user!");
     println!("Guess the number from 1 to 100!");
     let answer = random_int() % 100 + 1;
-    while !try_guess(&answer) {};
+    while !try_guess(answer) {};
     println!("Goodbye!");
 }

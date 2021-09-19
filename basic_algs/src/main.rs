@@ -20,7 +20,7 @@ fn is_prime(x : i128) -> bool {
 }
 
 // Алгоритм вычисления N-ого простого числа. (N <= 10000)
-fn get_Ns_prime(n : i64) -> i128 {
+fn get_nth_prime(n : i64) -> i128 {
     let mut found = 0;
     let mut x = 2;
 
@@ -39,7 +39,7 @@ fn get_Ns_prime(n : i64) -> i128 {
 
 // Алгоритм бинарного поиска числа в отсортированном статическом массиве из 10 элементов, находит первое большее переданного на вход числа
 fn bin_search(array: &[i32; 10], n: i32) -> Option<i32> {
-    let mut l = 0;
+    let mut l = -1;
     let mut r = 10;
     while l + 1 < r {
         let m = (l + r) / 2;
@@ -55,7 +55,7 @@ fn bin_search(array: &[i32; 10], n: i32) -> Option<i32> {
         None
     }
     else {
-        Some(array[r])
+        Some(r)
     }
 }
 
@@ -78,13 +78,13 @@ fn main() {
     println!("Min in simple Array: {}", get_min(&array));
     println!("Min in sorted Array: {}", get_min(&sorted_array));
 
-    println!("The 1st prime number is {}", get_Ns_prime(1));
-    println!("The 2nd prime number is {}", get_Ns_prime(2));
-    println!("The 3rd prime number is {}", get_Ns_prime(3));
-    println!("The 32nd prime number is {}", get_Ns_prime(32));
-    println!("The 100th prime number is {}", get_Ns_prime(10000));
+    println!("The 1st prime number is {}", get_nth_prime(1));
+    println!("The 2nd prime number is {}", get_nth_prime(2));
+    println!("The 3rd prime number is {}", get_nth_prime(3));
+    println!("The 32nd prime number is {}", get_nth_prime(32));
+    println!("The 100th prime number is {}", get_nth_prime(10000));
 
-    println!("The first number in sorted Array greater than -5 is {:?}", bin_search(&sorted_array, -5));
-    println!("The first number in sorted Array greater than 98 is {:?}", bin_search(&sorted_array, 98));
-    println!("The first number in sorted Array greater than 321371 is {:?}", bin_search(&sorted_array, 321371));
+    println!("The first number in sorted Array greater than -5 is n. {:?}", bin_search(&sorted_array, -5));
+    println!("The first number in sorted Array greater than 98 is n. {:?}", bin_search(&sorted_array, 98));
+    println!("The first number in sorted Array greater than 321371 is n. {:?}", bin_search(&sorted_array, 321371));
 }
